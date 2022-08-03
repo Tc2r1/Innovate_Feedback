@@ -21,6 +21,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tc2r1.android.navigation.TitleFragment">
 
+    <data>
+
+        <variable
+            name="tempObject"
+            type="com.tc2r1.android.nudennie_white_boilerplate.data.TempObject" />
+
+
+        <variable
+            name="title"
+            type="com.tc2r1.android.nudennie_white_boilerplate.fragment.TitleFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleConstraint"
         android:layout_width="match_parent"

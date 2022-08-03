@@ -19,6 +19,9 @@
     <color name="color_primary_dark">#00574B</color>
     <color name="close_button">#D81B60</color>
     <color name="color_accent">#D81B60</color>
+    <color name="red_200">#99FF0000</color>
+    <color name="red_500">#99A81414</color>
+    <color name="red_700">#99E11414</color>
     <color name="green">#6ab343</color>
     <color name="grey">#99000000</color>
     <color name="purple_200">#FFBB86FC</color>

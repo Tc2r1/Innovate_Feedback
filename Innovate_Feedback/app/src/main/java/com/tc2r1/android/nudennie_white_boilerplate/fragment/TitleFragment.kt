@@ -7,17 +7,20 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.tc2r1.android.nudennie_white_boilerplate.MyApplication
 import com.tc2r1.android.nudennie_white_boilerplate.R
-import com.tc2r1.android.nudennie_white_boilerplate.R.string
-import com.tc2r1.android.nudennie_white_boilerplate.data.RatingObject
+import com.tc2r1.android.nudennie_white_boilerplate.data.TempObject
 import com.tc2r1.android.nudennie_white_boilerplate.databinding.FragmentTitleBinding
-import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.RatingViewModel
-import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.RatingViewState
+import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewModel
+import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewModelFactory
+import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewState
+import java.time.Year
 
 /**
  * A simple [Fragment] subclass.
@@ -25,10 +28,15 @@ import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.RatingViewState
  */
 class TitleFragment : Fragment() {
 
+    private lateinit var viewModelFactory: TempViewModelFactory
+
     // ViewModel Scoping. usages delegate to save and cache viewModel.
-    private val viewModel by activityViewModels<RatingViewModel> { defaultViewModelProviderFactory }
+    private val viewModel: TempViewModel by viewModels(
+        factoryProducer = { viewModelFactory }
+    )
+
     // DataBinding Variable references to views.
-    private lateinit var ratingObject: RatingObject
+    private lateinit var tempObject: TempObject
 
     // Contains all the views
     private var _binding: FragmentTitleBinding? = null
@@ -42,13 +50,14 @@ class TitleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTitleBinding.inflate(inflater, container, false)
-        ratingObject =
-            RatingObject(getString(string.title), getString(string.subTitle))
+        tempObject =
+            TempObject(getString(R.string.name), Year.parse(getString(R.string.birth_year)))
+        viewModelFactory = TempViewModelFactory(tempObject)
         binding.apply {
-            ratingBar.setOnClickListener { view: View ->
-                view.findNavController()
-                    .navigate(TitleFragmentDirections.actionTitleFragmentToAboutFragment())
-            }
+            //btnAbout.setOnClickListener { view: View ->
+            //    view.findNavController()
+            //        .navigate(TitleFragmentDirections.actionTitleFragmentToAboutFragment())
+            //}
         }
         setHasOptionsMenu(true)
         return binding.root
@@ -56,10 +65,19 @@ class TitleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewStateObserver = Observer<RatingViewState> { viewState ->
+        val viewStateObserver = Observer<TempViewState> { viewState ->
             // Update the UI
-            binding.tvTitle.text = viewState.title
-            binding.tvSubtitle.text = viewState.subTitle
+            //binding.tvName.text = viewState.name
+            //binding.tvCurrentAge.text = viewState.age
+            //binding.tvCompareAgeToAS.text = viewState.ageVsASResult
+
+            binding.ratingBar.
+            setOnRatingBarChangeListener( RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
+
+                MyApplication.numOfStars = rating.toInt()
+                ratingBar.findNavController().navigate(TitleFragmentDirections.actionTitletFragmentToFeedbackFragment())
+
+            })
         }
 
         // observe for changes in the viewstate
@@ -77,7 +95,6 @@ class TitleFragment : Fragment() {
         inflater.inflate(R.menu.overflow_menu, menu)
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) ||
             super.onOptionsItemSelected(item)

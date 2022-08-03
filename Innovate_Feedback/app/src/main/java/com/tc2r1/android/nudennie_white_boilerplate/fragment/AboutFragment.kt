@@ -21,12 +21,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.tc2r1.android.nudennie_white_boilerplate.R
 import com.tc2r1.android.nudennie_white_boilerplate.databinding.FragmentAboutBinding
+import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewModel2
+import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewModelFactory2
 
 class AboutFragment : Fragment() {
+    private lateinit var viewModelFactory: TempViewModelFactory2
 
-    private lateinit var aboutDescription: String
+    // ViewModel Scoping. usages delegate to save and cache viewModel.
+    private val viewModel: TempViewModel2 by viewModels(
+        factoryProducer = { viewModelFactory }
+    )
+    lateinit var aboutDescription: String
 
     // Contains all the views
     private var _binding: FragmentAboutBinding? = null
@@ -40,8 +49,19 @@ class AboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
+
+        binding.about = this
+
         // binding.tvAbout.text = getString(R.string.about_text)
         aboutDescription = getString(R.string.about_text)
+
+        binding.nextButton.setOnClickListener( View.OnClickListener {
+            it.findNavController()
+                .navigate(AboutFragmentDirections.actionAboutFragmentToFeedbackFragment())
+
+        })
+
+
 
         return binding.root
     }

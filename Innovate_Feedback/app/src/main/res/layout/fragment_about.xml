@@ -17,6 +17,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="about"
+            type="com.tc2r1.android.nudennie_white_boilerplate.fragment.AboutFragment" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,13 +42,19 @@
                 android:layout_marginStart="@dimen/horizontal_margin"
                 android:layout_marginTop="@dimen/vertical_margin"
                 android:layout_marginEnd="@dimen/horizontal_margin"
-                android:text="This is the about text section"
+                android:text="@{about.aboutDescription}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textAlignment="center"
                 style="@style/NameStyle" />
+
+            <Button
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GO TO NEXT PAGE"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
