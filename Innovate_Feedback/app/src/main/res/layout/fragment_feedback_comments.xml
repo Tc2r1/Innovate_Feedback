@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2018, The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/titleConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:layout_marginStart="@dimen/layout_large_margin"
+        android:layout_marginEnd="@dimen/layout_large_margin">
+
+        <ImageView
+            android:id="@+id/img_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/title_image_content_description"
+            android:scaleType="fitCenter"
+            tools:src="@tools:sample/avatars"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="@color/close_button" />
+
+        <TextView
+            android:id="@+id/tv_thankYou"
+            style="@style/headerStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            tools:text="Thank you for your feedback. We’re glad you had a great experience." />
+
+        <TextView
+            android:id="@+id/tv_leaveFeedback"
+            style="@style/subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:textAlignment="textStart"
+            tools:text="Would you like to leave a commment?" />
+
+        <EditText
+            android:id="@+id/et_storeNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Store 219"
+            android:autofillHints="Store 219"
+            android:inputType="number"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Category:"
+            android:layout_marginBottom="5dp"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"/>
+
+
+        <EditText
+            android:id="@+id/et_leave_comment"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:hint="Leave a comment here..."
+            android:autofillHints="" />
+    </LinearLayout>
+</layout>

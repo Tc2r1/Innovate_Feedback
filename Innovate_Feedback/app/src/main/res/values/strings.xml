@@ -1,0 +1,32 @@
+<!--
+  ~ Copyright 2018, The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">StewardessSwimmingK </string>
+    <string name="share_text">Check This Out! %1$s</string>
+    <string name="share">Share</string>
+    <string name="sharing_not_available">Sharing Not Available</string>
+    <string name="name">Android Developer Nudennie White </string>
+    <string name="title">Tell Us About Your Experience</string>
+    <string name="subTitle">Your input matters, we will use it to create better experiences.</string>
+
+    <string name="birth_year">1985</string>
+    <string name="about">About</string>
+    <string name="feedback">Leave Feedback</string>
+    <string name="about_text">This is a project I created to standardize my tech stack when it comes to building android applications. I would like most of the libraries presented here to be used in every application I make. I will update as time goes by. </string>
+    <string name="title_image_content_description">An Android Avatar Icon</string>
+
+</resources>
