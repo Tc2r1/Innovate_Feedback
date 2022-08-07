@@ -1,4 +1,4 @@
-package com.tc2r1.android.nudennie_white_boilerplate
+package com.tc2r1.innovate.pilotfeedback
 
 import android.app.Application
 import timber.log.Timber

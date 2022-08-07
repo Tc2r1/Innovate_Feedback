@@ -25,8 +25,15 @@
 
     <string name="birth_year">1985</string>
     <string name="about">About</string>
+    <string name="home">Homeo</string>
     <string name="feedback">Leave Feedback</string>
     <string name="about_text">This is a project I created to standardize my tech stack when it comes to building android applications. I would like most of the libraries presented here to be used in every application I make. I will update as time goes by. </string>
     <string name="title_image_content_description">An Android Avatar Icon</string>
+    <string name="spinner_prompt_positive">Please Choose A Categories To Give Praise.</string>
+    <string name="spinner_prompt_negative">What Category does your complaint fall under?</string>
+    <string name="confirm_feedback_positive">Thank you for your feedback. We’re glad you had a great experience.</string>
+    <string name="title_feedback_negative">How can we do better?</string>
+    <string name="subtitle_feedback_negative">We’re sorry you had a bad experience. Please leave a comment below to let us know how we can be better in the future.</string>
+    <string name="subtitle_feedback_positive">Would you like to leave a comment?</string>
 
 </resources>

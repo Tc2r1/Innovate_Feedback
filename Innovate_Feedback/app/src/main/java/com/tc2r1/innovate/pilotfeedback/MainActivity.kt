@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.tc2r1.android.nudennie_white_boilerplate
+package com.tc2r1.innovate.pilotfeedback
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
@@ -29,7 +30,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.tc2r1.android.nudennie_white_boilerplate.databinding.ActivityMainBinding
+import com.tc2r1.innovate.pilotfeedback.databinding.ActivityMainBinding
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), LifecycleObserver {
@@ -57,9 +58,10 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
         // Setup Navigation Controller
         val navController = this.findNavController(R.id.myNavHostFragment)
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        // NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         // Setup Appbar Configuration
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+        supportActionBar?.hide();
         // Setup NavController Listener
         navController.addOnDestinationChangedListener { controller, destination, _ ->
             when (destination.id) {
@@ -70,10 +72,6 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
             }
         }
         NavigationUI.setupWithNavController(binding.navView, navController)
-
-        // Hide Keyboard when complete.
-        //        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        //        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     override fun onResume() {
@@ -102,7 +100,8 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
             startActivity(shareIntent)
         } catch (ex: ActivityNotFoundException) {
             Toast.makeText(
-                this, getString(R.string.sharing_not_available),
+                this,
+                getString(R.string.sharing_not_available),
                 Toast.LENGTH_LONG
             ).show()
         }

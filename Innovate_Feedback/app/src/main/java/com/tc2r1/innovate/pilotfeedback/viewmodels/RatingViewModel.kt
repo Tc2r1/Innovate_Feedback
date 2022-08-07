@@ -1,11 +1,11 @@
-package com.tc2r1.android.nudennie_white_boilerplate.viewmodels
+package com.tc2r1.innovate.pilotfeedback.viewmodels
 
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tc2r1.android.nudennie_white_boilerplate.data.RatingObject
+import com.tc2r1.innovate.pilotfeedback.data.RatingObject
 
 /**
  * A simple [ViewModel] subclass.

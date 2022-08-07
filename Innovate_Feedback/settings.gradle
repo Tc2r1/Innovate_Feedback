@@ -5,5 +5,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Nudennie_White_BoilerPlate"
+rootProject.name = "Pilot Feedback"
 include ':app'

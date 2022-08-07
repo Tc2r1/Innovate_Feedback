@@ -1,4 +1,4 @@
-package com.tc2r1.android.nudennie_white_boilerplate.fragment
+package com.tc2r1.innovate.pilotfeedback.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,33 +13,32 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.tc2r1.android.nudennie_white_boilerplate.MyApplication
-import com.tc2r1.android.nudennie_white_boilerplate.R
-import com.tc2r1.android.nudennie_white_boilerplate.data.TempObject
-import com.tc2r1.android.nudennie_white_boilerplate.databinding.FragmentTitleBinding
-import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewModel
-import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewModelFactory
-import com.tc2r1.android.nudennie_white_boilerplate.viewmodels.TempViewState
-import java.time.Year
+import com.tc2r1.innovate.pilotfeedback.MyApplication
+import com.tc2r1.innovate.pilotfeedback.R
+import com.tc2r1.innovate.pilotfeedback.data.RatingObject
+import com.tc2r1.innovate.pilotfeedback.databinding.FragmentRatingBinding
+import com.tc2r1.innovate.pilotfeedback.viewmodels.RatingViewModel
+import com.tc2r1.innovate.pilotfeedback.viewmodels.RatingViewModelFactory
+import com.tc2r1.innovate.pilotfeedback.viewmodels.RatingViewState
 
 /**
  * A simple [Fragment] subclass.
  * Responsible for Binding Data
  */
-class TitleFragment : Fragment() {
+class RatingFragment : Fragment() {
 
-    private lateinit var viewModelFactory: TempViewModelFactory
+    private lateinit var viewModelFactory: RatingViewModelFactory
 
     // ViewModel Scoping. usages delegate to save and cache viewModel.
-    private val viewModel: TempViewModel by viewModels(
+    private val viewModel: RatingViewModel by viewModels(
         factoryProducer = { viewModelFactory }
     )
 
     // DataBinding Variable references to views.
-    private lateinit var tempObject: TempObject
+    private lateinit var tempObject: RatingObject
 
     // Contains all the views
-    private var _binding: FragmentTitleBinding? = null
+    private var _binding: FragmentRatingBinding? = null
 
     // This property is only valid between onCreateView and onDestoryView
     private val binding get() = _binding!!
@@ -49,35 +48,21 @@ class TitleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTitleBinding.inflate(inflater, container, false)
+        _binding = FragmentRatingBinding.inflate(inflater, container, false)
         tempObject =
-            TempObject(getString(R.string.name), Year.parse(getString(R.string.birth_year)))
-        viewModelFactory = TempViewModelFactory(tempObject)
-        binding.apply {
-            //btnAbout.setOnClickListener { view: View ->
-            //    view.findNavController()
-            //        .navigate(TitleFragmentDirections.actionTitleFragmentToAboutFragment())
-            //}
-        }
+            RatingObject("Taco Bell", "Where Tacos Are Born.")
+        viewModelFactory = RatingViewModelFactory(tempObject)
         setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewStateObserver = Observer<TempViewState> { viewState ->
-            // Update the UI
-            //binding.tvName.text = viewState.name
-            //binding.tvCurrentAge.text = viewState.age
-            //binding.tvCompareAgeToAS.text = viewState.ageVsASResult
-
-            binding.ratingBar.
-            setOnRatingBarChangeListener( RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
-
+        val viewStateObserver = Observer<RatingViewState> {
+            binding.ratingBar.onRatingBarChangeListener = RatingBar.OnRatingBarChangeListener { ratingBar, rating, _ ->
                 MyApplication.numOfStars = rating.toInt()
-                ratingBar.findNavController().navigate(TitleFragmentDirections.actionTitletFragmentToFeedbackFragment())
-
-            })
+                ratingBar.findNavController().navigate(RatingFragmentDirections.actionRatingFragmentToFeedbackFragment())
+            }
         }
 
         // observe for changes in the viewstate

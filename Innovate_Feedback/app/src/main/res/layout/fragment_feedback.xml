@@ -19,7 +19,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tc2r1.android.navigation.TitleFragment">
+    tools:context="com.tc2r1.innovate.navigation.TitleFragment">
 
     <data>
     </data>
@@ -37,11 +37,20 @@
         android:id="@+id/img_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:contentDescription="@string/title_image_content_description"
         android:scaleType="fitCenter"
         tools:src="@tools:sample/avatars"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
         app:tint="@color/close_button" />
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:contentDescription="@string/title_image_content_description"
+        android:scaleType="fitCenter"
+        android:src="@drawable/swimmingj_icon" />
 
     <TextView
         android:id="@+id/tv_thankYou"
@@ -69,10 +78,11 @@
         android:id="@+id/et_storeNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Store 219"
-        android:autofillHints="Store 219"
+        android:hint="219"
+        android:autofillHints="219"
         android:inputType="number"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        android:backgroundTint="@color/color_accent"/>
 
     <TextView
         android:layout_width="fill_parent"
@@ -91,10 +101,21 @@
     <EditText
         android:id="@+id/et_leave_comment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:inputType="textPersonName"
+        android:gravity="top|start"
         android:ems="10"
         android:hint="Leave a comment here..."
+        android:backgroundTint="@color/color_accent"
         android:autofillHints="" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Submit"
+        android:autofillHints=""
+        android:enabled="false"/>
 </LinearLayout>
 </layout>

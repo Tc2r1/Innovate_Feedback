@@ -1,4 +1,4 @@
-package com.tc2r1.android.nudennie_white_boilerplate.viewmodels
+package com.tc2r1.innovate.pilotfeedback.viewmodels
 
 /**
  * A simple Data class.
@@ -8,5 +8,5 @@ package com.tc2r1.android.nudennie_white_boilerplate.viewmodels
 data class RatingViewState(
     // Define fields we want to store in VM.
     val title: String,
-    val subTitle: String,
+    val subTitle: String
 )

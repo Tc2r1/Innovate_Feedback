@@ -1,9 +1,9 @@
-package com.tc2r1.android.nudennie_white_boilerplate.viewmodels
+package com.tc2r1.innovate.pilotfeedback.viewmodels
 
 /**
  * A simple Data class.
  * Sets the fields to be stored in Custom
- * ViewModel [RatingViewModel]
+ * ViewModel [FeedbackViewModel]
  */
 data class FeedbackViewState(
     val isPositive: Boolean,

@@ -1,14 +1,15 @@
-package com.tc2r1.android.nudennie_white_boilerplate.viewmodels
+package com.tc2r1.innovate.pilotfeedback.viewmodels
+
+
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tc2r1.android.nudennie_white_boilerplate.data.FeedbackObject
+import com.tc2r1.innovate.pilotfeedback.data.FeedbackObject
 import java.time.Year
 import java.time.temporal.ChronoField
 import kotlin.math.abs
 import timber.log.Timber
-
 
 /**
  * A simple [ViewModel] subclass.
@@ -16,15 +17,28 @@ import timber.log.Timber
  * Calculations and Formatting.
  */
 
-class TempViewModel2(tempObject: FeedbackObject) : ViewModel() {
+class FeedbackViewModel(tempObject: FeedbackObject) : ViewModel() {
     private val _viewState: MutableLiveData<FeedbackViewState> = MutableLiveData()
     val viewState: LiveData<FeedbackViewState> = _viewState
+
+    var selectedCategory: String? = null
+    var comment: String = ""
+    var storeNum: Int? = null
+
+    private val _showConfirmButton = MutableLiveData(false)
+    val showConfirmButton: LiveData<Boolean> = _showConfirmButton
 
     init {
         _viewState.value = FeedbackViewState(
             isPositive = tempObject.isPositiveFeedback,
-            numOfStarts = tempObject.numOfStarts,
+            numOfStarts = tempObject.numOfStarts
         )
+    }
+
+    fun checkConfirmButton() {
+        if (selectedCategory != null && storeNum != null) {
+            _showConfirmButton.value = true
+        }
     }
 
     // Does not account for Leap Years, I could add it but this is

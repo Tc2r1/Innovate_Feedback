@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tc2r1.android.nudennie_white_boilerplate">
+    package="com.tc2r1.innovate.pilotfeedback">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name="com.tc2r1.android.nudennie_white_boilerplate.MyApplication"
+        android:name="com.tc2r1.innovate.pilotfeedback.MyApplication"
         android:fullBackupOnly="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nudennie_White_BoilerPlate">
         <activity
-            android:name=".MainActivity"
+            android:name="com.tc2r1.innovate.pilotfeedback.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
